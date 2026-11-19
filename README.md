@@ -32,3 +32,9 @@ This project implements an Emotion Detection Application using the IBM Watson NL
 2. Activate the virtual environment.
 3. Run python server.py.
 4. Open http://127.0.0.1:5000.
+
+## Repository Name
+EmotionDetection
+
+## Project Name
+Emotion Detection Application
