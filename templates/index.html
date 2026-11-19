@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detection Application</title>
+</head>
+<body>
+    <h1>Emotion Detection Application</h1>
+
+    <label for="textToAnalyze">Enter your text:</label>
+    <textarea id="textToAnalyze" rows="5" cols="50"></textarea>
+
+    <br><br>
+
+    <button onclick="analyzeEmotion()">Analyze Emotion</button>
+
+    <h2>Results</h2>
+    <div id="result"></div>
+
+    <script>
+        async function analyzeEmotion() {
+            const text = document.getElementById("textToAnalyze").value;
+            const result = document.getElementById("result");
+
+            if (!text.trim()) {
+                result.innerText = "Please enter some text.";
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    "/emotionDetector?textToAnalyze=" +
+                    encodeURIComponent(text)
+                );
+
+                const data = await response.text();
+
+                result.innerText = data;
+            } catch (error) {
+                result.innerText = "Unable to connect to the application.";
+            }
+        }
+    </script>
+</body>
+</html>
